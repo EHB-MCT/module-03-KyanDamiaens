@@ -11,6 +11,7 @@ function setup() {
 	let canvas = createCanvas(container.offsetWidth, container.offsetHeight);
 	canvas.parent("canvas-container");
 	textAlign(CENTER, CENTER);
+	textSize(10);
 
 	resetData();
 
@@ -29,11 +30,19 @@ function draw() {
 	let cellH = height / rows;
 
 	// Loop through the sizes
-	fill(0, 119, 255);
+
 	for (let i = 0; i < cols; i++) {
 		for (let j = 0; j < rows; j++) {
+			fill(0, 119, 255);
 			let size = sizes[i * j];
-			circle(i * cellW + cellW / 2, j * cellH + cellH / 2, size * 2);
+			let x = i * cellW + cellW / 2;
+			let y = j * cellH + cellH / 2;
+			circle(x, y, size);
+
+			if (size > 25) {
+				fill(255);
+				text(size, x, y);
+			}
 		}
 	}
 
@@ -45,7 +54,7 @@ function resetData() {
 	//generate sizes
 	sizes = [];
 	for (let i = 0; i < numCircles; i++) {
-		sizes.push(random(10, 50));
+		sizes.push(random(Math.floor(random(10, 100))));
 	}
 	//reset foundIndex
 	foundIndex = -1;
