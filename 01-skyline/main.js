@@ -19,8 +19,10 @@ function setup() {
 	resetData();
 
 	// 2. Add Event Listeners
-
 	// Select the buttons and add 'click' listeners to call the functions below
+	document.querySelector("#btn-grow").addEventListener("click", growCity);
+	document.querySelector("#btn-shrink").addEventListener("click", shrinkCity);
+	document.querySelector("#btn-reset").addEventListener("click", resetData);
 }
 
 function draw() {
@@ -34,12 +36,20 @@ function draw() {
 
 	// 3. Visualize the Loop
 	// Use forEach to loop through the buildings array
-	fill("red");
+
 	buildings.forEach(function (building, index) {
-		rect(startX + index * buildingWidth, groundLevel, buildingWidth, building);
+		fill(0, 0, 255 - building);
+		rect(
+			startX + index * buildingWidth,
+			groundLevel,
+			buildingWidth - 2,
+			-building,
+		);
 	});
 	// Calculate x and y positions
+
 	// Draw a rect() for each building
+
 	// Challenge: Set fill() based on height (taller = darker)
 	// Bonus: Apply animationOffset to height
 }
@@ -59,13 +69,22 @@ function resetData() {
 function growCity() {
 	// 4. Grow the City
 	// Use .map() to create a new array where buildings are 10% taller
-	console.log("Grow city");
+	let newHeights = buildings.map(function (building) {
+		return building * 1.1; // Increase height by 10%
+	});
+
+	buildings = newHeights;
 	updateDOM();
 }
 
 function shrinkCity() {
 	// 5. Shrink the City
 	// Use .map() to create a new array where buildings are 10% smaller
+	let newHeights = buildings.map(function (building) {
+		return building * 0.9; // Decrease height by 10%
+	});
+
+	buildings = newHeights;
 	console.log("Shrink city");
 	updateDOM();
 }
