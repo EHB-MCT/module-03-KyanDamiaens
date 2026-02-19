@@ -7,66 +7,72 @@ let numCircles = cols * rows;
 let foundIndex = -1;
 
 function setup() {
-    let container = document.getElementById('canvas-container');
-    let canvas = createCanvas(container.offsetWidth, container.offsetHeight);
-    canvas.parent('canvas-container');
-    textAlign(CENTER, CENTER);
+	let container = document.getElementById("canvas-container");
+	let canvas = createCanvas(container.offsetWidth, container.offsetHeight);
+	canvas.parent("canvas-container");
+	textAlign(CENTER, CENTER);
 
-    resetData();
+	resetData();
 
-    // DOM Listeners
-    document.getElementById('btn-find').addEventListener('click', findValue);
-    document.getElementById('btn-sort-up').addEventListener('click', sortUp);
-    document.getElementById('btn-sort-down').addEventListener('click', sortDown);
-    document.getElementById('btn-reset').addEventListener('click', resetData);
+	// DOM Listeners
+	document.getElementById("btn-find").addEventListener("click", findValue);
+	document.getElementById("btn-sort-up").addEventListener("click", sortUp);
+	document.getElementById("btn-sort-down").addEventListener("click", sortDown);
+	document.getElementById("btn-reset").addEventListener("click", resetData);
 }
 
 function draw() {
-    background(255); // White background
+	background(255); // White background
+	noStroke();
 
-    let cellW = width / cols;
-    let cellH = height / rows;
+	let cellW = width / cols;
+	let cellH = height / rows;
 
+	// Loop through the sizes
+	fill(0, 119, 255);
+	for (let i = 0; i < cols; i++) {
+		for (let j = 0; j < rows; j++) {
+			let size = sizes[i * j];
+			circle(i * cellW + cellW / 2, j * cellH + cellH / 2, size * 2);
+		}
+	}
 
-    // Loop through the sizes
-
-    // Drawing
-    // Check for found index: red or blue
-
-
+	// Drawing
+	// Check for found index: red or blue
 }
 
 function resetData() {
-    //generate sizes
-    //reset foundIndex
-    //calculate stats
-
+	//generate sizes
+	sizes = [];
+	for (let i = 0; i < numCircles; i++) {
+		sizes.push(random(10, 50));
+	}
+	//reset foundIndex
+	foundIndex = -1;
+	//calculate stats
+	calculateStats();
 }
 
 function findValue() {
-    //get input value
-    //search for value
+	//get input value
+	//search for value
 
-    //if value not found, alert
-    if (foundIndex == -1) {
-        alert("Value not found!");
-    }
+	//if value not found, alert
+	if (foundIndex == -1) {
+		alert("Value not found!");
+	}
 }
 
 function sortUp() {
-    // sort ascending
-
+	// sort ascending
 }
 
 function sortDown() {
-    // sort descending
-
+	// sort descending
 }
 
 function calculateStats() {
-    //use reduce to calculate total
-
-    //calculate average
-
-    //add both to DOM
+	//use reduce to calculate total
+	//calculate average
+	//add both to DOM
 }

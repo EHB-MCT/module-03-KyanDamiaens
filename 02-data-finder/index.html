@@ -1,53 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Data Finder</title>
+		<link rel="stylesheet" href="style.css" />
+		<script src="../libs/p5.min.js"></script>
+		<script src="main.js" defer></script>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Finder</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="../libs/p5.min.js"></script>
-    <script src="main.js" defer></script>
-</head>
+	<body>
+		<div id="wrapper">
+			<div id="canvas-container"></div>
+			<div id="dom-container">
+				<div id="header">
+					<h1>Data Finder</h1>
+					<div class="subtitle">find & filter & sort & reduce</div>
+				</div>
 
-<body>
-    <div id="wrapper">
-        <div id="canvas-container"></div>
-        <div id="dom-container">
-            <div id="header">
-                <h1>Data Finder</h1>
-                <div class="subtitle">find & filter & sort & reduce</div>
-            </div>
+				<div class="controls">
+					<p class="description">
+						Locate specific data points, filter, or organize the data.
+					</p>
 
-            <div class="controls">
-                <p class="description">Locate specific data points, filter, or organize the data.</p>
+					<div class="input-group">
+						<label>Find Value:</label>
+						<div style="display: flex; gap: 10px">
+							<input type="number" id="find-input" placeholder="50" />
+							<button id="btn-find">Find</button>
+						</div>
+					</div>
 
-                <div class="input-group">
-                    <label>Find Value:</label>
-                    <div style="display: flex; gap: 10px;">
-                        <input type="number" id="find-input" placeholder="50">
-                        <button id="btn-find">Find</button>
-                    </div>
-                </div>
+					<div class="input-group">
+						<label>Organize Data:</label>
+						<div style="display: flex; gap: 10px">
+							<button id="btn-sort-up">Sort Up (Asc)</button>
+							<button id="btn-sort-down">Sort Down (Desc)</button>
+						</div>
+					</div>
 
-                <div class="input-group">
-                    <label>Organize Data:</label>
-                    <div style="display: flex; gap: 10px;">
-                        <button id="btn-sort-up">Sort Up (Asc)</button>
-                        <button id="btn-sort-down">Sort Down (Desc)</button>
-                    </div>
-                </div>
+					<div class="stats-box">
+						<h3>Data Stats</h3>
+						<p>Total Mass: <span id="total-mass" class="highlight">0</span></p>
+						<p>Average Size: <span id="avg-size" class="highlight">0</span></p>
+					</div>
 
-                <div class="stats-box">
-                    <h3>Data Stats</h3>
-                    <p>Total Mass: <span id="total-mass" class="highlight">0</span></p>
-                    <p>Average Size: <span id="avg-size" class="highlight">0</span></p>
-                </div>
-
-                <button id="btn-reset" style="margin-top: 20px;">Load New Data</button>
-            </div>
-        </div>
-    </div>
-</body>
-
+					<button id="btn-reset" style="margin-top: 20px">Load New Data</button>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
