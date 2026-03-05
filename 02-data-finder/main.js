@@ -33,8 +33,13 @@ function draw() {
 
 	for (let i = 0; i < cols; i++) {
 		for (let j = 0; j < rows; j++) {
-			fill(0, 119, 255);
-			let size = sizes[i * j];
+			let index = i * rows + j;
+			let size = sizes[index];
+			if (foundIndex == index) {
+				fill(255, 0, 0);
+			} else {
+				fill(0, 119, 255);
+			}
 			let x = i * cellW + cellW / 2;
 			let y = j * cellH + cellH / 2;
 			circle(x, y, size);
@@ -54,7 +59,7 @@ function resetData() {
 	//generate sizes
 	sizes = [];
 	for (let i = 0; i < numCircles; i++) {
-		sizes.push(random(Math.floor(random(10, 100))));
+		sizes.push(Math.floor(random(0, 101)));
 	}
 	//reset foundIndex
 	foundIndex = -1;
@@ -63,25 +68,54 @@ function resetData() {
 }
 
 function findValue() {
-	//get input value
-	//search for value
-
-	//if value not found, alert
+	let value = parseInt(document.getElementById("find-input").value);
+	foundIndex = -1;
+	for (let i = 0; i < sizes.length; i++) {
+		if (sizes[i] == value) {
+			foundIndex = i;
+			break;
+		}
+	}
 	if (foundIndex == -1) {
 		alert("Value not found!");
 	}
 }
 
 function sortUp() {
-	// sort ascending
+	sizes.sort(function (a, b) {
+		if (a > b) {
+			return 1;
+		} else {
+			return -1;
+		}
+	});
+	console.log(sizes);
+	console.log("sorted arrays");
 }
 
 function sortDown() {
-	// sort descending
+	sizes.sort(function (a, b) {
+		if (a < b) {
+			return 1;
+		} else {
+			return -1;
+		}
+	});
+	console.log(sizes);
+	console.log("sorted arrays");
 }
 
 function calculateStats() {
 	//use reduce to calculate total
-	//calculate average
+	let total = sizes.reduce(function (sum, size) {
+		return sum + size;
+	});
+
+	console.log("total: " + total);
+
+	// calculate average
+	let avg = total / sizes.length;
+	console.log("average: " + avg);
+
 	//add both to DOM
 }
